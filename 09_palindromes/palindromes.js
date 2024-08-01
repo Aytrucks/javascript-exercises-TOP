@@ -1,22 +1,16 @@
 const palindromes = function (original) {
-    let newStr = "";
+    let alphaNum = "abcdefghijklmnopqrstuvwxyz0123456789";
 
-    function isAlnum(string){
-        let code = 0;
-        let newStr = "";
-        for(let i = 0;i < string.length;i++){
-            code = string.charCodeAt(i);
-            if((code > 47 && code < 58) || (code > 64 && code < 91) || (code > 96 && code < 123)){
-                newStr += string[i];
-            }
-        }
-        return newStr;
+    function clean(string){
+        return string
+        .toLowerCase()
+        .split("")
+        .filter((char) => alphaNum.includes(char))
+        .join("");
     }
-    let original2 = isAlnum(original);
-    for(let i = original2.length - 1;i >= 0;i--){
-        newStr += original2[i];
-    }
-    return newStr.toLowerCase() === original2.toLowerCase();
+
+    
+    return clean(original) === clean(original).split("").reverse().join("");
 };
 
 // Do not edit below this line
